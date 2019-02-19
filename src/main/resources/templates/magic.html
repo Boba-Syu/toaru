@@ -6,6 +6,33 @@
     <meta charset="UTF-8">
     <title>数据库显示</title>
     <script>
+        function insert() {
+            var str1 = '';
+            var str2 = '';
+            str1 += '<thead>'
+                + '<th>姓名</th>'
+                + '<th>性别</th>'
+                + '<th>等级</th>'
+                + '</thead>';
+            str1 += '<tbody>'
+                + '<td><input></td>'
+                + '<td><input></td>'
+                + '<td><input></td>'
+                + '</tbody>';
+            str2 += '<thead>'
+                + '<th>能力</th>'
+                + '<th>学校</th>'
+                + '<th>年级</th>'
+                + '</thead>';
+            str2 += '<tbody>'
+                + '<td><input></td>'
+                + '<td><input></td>'
+                + '<td><input></td>'
+                + '</tbody>';
+            $(intable1).html(str1);
+            $(intable2).html(str2);
+            $(inbutton).html('<button onclick="()" type="button" class="btn-primary btn btn-default">确定</button>');
+        }
         function back() {
             window.location.href="/toaru";
         }
@@ -99,7 +126,13 @@
                 <div class=" btn-group">
                     <button onclick="search()" type="button" class="btn-primary btn btn-default">搜索</button>
                     <button onclick="del()" type="button" class="btn-primary btn btn-default">删除</button>
+                    <button onclick="insert()" type="button" class="btn-primary btn btn-default">新增</button>
+                </div><br>
+                <div class=" btn-group">
                 </div>
+                <table id="intable1"></table>
+                <table id="intable2"></table>
+                <div id="inbutton"></div>
             </div>
         </form>
     </div>
