@@ -16,9 +16,6 @@
         function register() {
             window.location.href="register";
         }
-        function show() {
-            window.location.href="magic";
-        }
     </script>
     <style>
         button{
@@ -28,7 +25,7 @@
             text-align: center;
         }
         #progress{
-            animation-duration: 3s;
+            animation-duration: 2s;
             animation-name: an;
             animation-timing-function: linear;
             animation-iteration-count: 1;
@@ -52,28 +49,25 @@
                 }
             }
         }
-//        $(document).ready(function () {
-//            load();
-//        })
-        function load() {
-            var str = '';
-            str += '<h1 class="page-header"><small>正在加载,请稍后...<br></small>';
-            str += '<div class="progress" >';
-            str += '<div id="progress" class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="45" aria-valuemin="100" aria-valuemax="100">';
-            str += '<span class="sr-only"></span>';
-            str += '</div>';
-            str += '</div>';
-            $(tableBody).html(str);
-        }
+        $(document).ready(function () {
+            $.ajax({
+                /*url: "toaru/",*/
+                success: function () {
+                    sleep(3000);
+                    yes();
+                }
+            })
+        });
         function yes() {
             var str = '';
-            str += '<h1 class="page-header"><small>加载完成<br></small>';
-            str += '<div class="progress" >';
-            str += '<div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="45" aria-valuemin="100" aria-valuemax="100" style="width:100%">';
-            str += '<span class="sr-only"></span>';
-            str += '</div>';
-            str += '</div>';
-            str += '<button onclick="login()" type="button" class="btn btn-primary btn-sm">确定</button></h1>';
+            str += '<h1 class="page-header"><small>加载完成<br>'
+                + '<div class="progress" >'
+                + '<div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="45" aria-valuemin="100" aria-valuemax="100" style="width:100%">'
+                + '<span class="sr-only"></span>'
+                + '</div>'
+                + '</div>'
+                + '</small></h1>'
+                + '<button onclick="login()" type="button" class="btn btn-primary btn-sm">确定</button>';
             $(tableBody).html(str);
         }
     </script>
@@ -84,7 +78,7 @@
 
         <div id="tableBody">
             <h1 class="page-header"><small>正在加载,请稍后...<br>
-                <div  class="progress" >
+                <div  class="progress">
                     <div id="progress" class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100">
                         <span class="sr-only"></span>
                     </div>
