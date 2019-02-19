@@ -15,9 +15,9 @@
                 + '<th>等级</th>'
                 + '</thead>';
             str1 += '<tbody>'
-                + '<td><input></td>'
-                + '<td><input></td>'
-                + '<td><input></td>'
+                + '<td><input id="cname" type="text" class="form-control" placeholder="name"></td>'
+                + '<td><input id="csex" type="text" class="form-control" placeholder="sex"></td>'
+                + '<td><input id="clevel" type="text" class="form-control" placeholder="level"></td>'
                 + '</tbody>';
             str2 += '<thead>'
                 + '<th>能力</th>'
@@ -25,13 +25,51 @@
                 + '<th>年级</th>'
                 + '</thead>';
             str2 += '<tbody>'
-                + '<td><input></td>'
-                + '<td><input></td>'
-                + '<td><input></td>'
+                + '<td><input id="cpower" type="text" class="form-control" placeholder="power"></td>'
+                + '<td><input id="cschool" type="text" class="form-control" placeholder="school"></td>'
+                + '<td><input id="cgrade" type="text" class="form-control" placeholder="grade"></td>'
                 + '</tbody>';
             $(intable1).html(str1);
             $(intable2).html(str2);
-            $(inbutton).html('<button onclick="()" type="button" class="btn-primary btn btn-default">确定</button>');
+            $(inbutton).html('<button onclick="insertYes()" type="button" class="btn-primary btn btn-default">确定</button>');
+        }
+        function insertYes() {
+            $("#fm").serialize();
+            var ObjectUser = new Object();
+            ObjectUser.cname = $.trim($(cname).val());
+            ObjectUser.csex = $.trim($(csex).val());
+            ObjectUser.clevel = $.trim($(clevel).val());
+            ObjectUser.cpower = $.trim($(cpower).val());
+            ObjectUser.cschool = $.trim($(cschool).val());
+            ObjectUser.cgrade = $.trim($(cgrade).val());
+            if( $.trim($(cname).val()) == '' || $.trim($(csex).val()) == '' || $.trim($(clevel).val()) == ''
+                || $.trim($(cpower).val()) == '' || $.trim($(cschool).val()) == '' || $.trim($(cgrade).val()) == ''){
+                window.alert("输入框内不能为空!");
+
+            }else {
+                $.ajax({
+                    type: 'GET',
+                    url: "/toaru/insert",
+                    contentType : 'application/json',
+                    timeout: 1000,
+                    data: {ObjectUser:JSON.stringify(ObjectUser)},
+                    dataType: 'text',
+                    success: function (result) {
+                        if(result == "success"){
+                            window.alert("添加成功");
+                            $(intable1).html('');
+                            $(intable2).html('');
+                            $(inbutton).html('');
+                        }
+                        else {
+                            window.alert("添加失败");
+                        }
+                    },
+                    error: function () {
+                        window.alert("添加失败!");
+                    }
+                })
+            }
         }
         function back() {
             window.location.href="/toaru";
