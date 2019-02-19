@@ -7,7 +7,6 @@
     <script src="js/bootstrap.js"></script>
     <title>The Bank</title>
     <script>
-        var tmp = 0;
         function hello() {
             window.location.href="hello";
         }
@@ -41,14 +40,6 @@
         }
     </style>
     <script>
-        function sleep(n) {
-            var start = new Date().getTime();
-            while (true) {
-                if (new Date().getTime() - start > n) {
-                    break;
-                }
-            }
-        }
         $(document).ready(function () {
             $.ajax({
                 success: function () {
