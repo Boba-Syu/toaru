@@ -1,3 +1,6 @@
+/**
+ * Created by MI on 2019/2/22.
+ */
 function insert() {
     var str1 = '';
     var str2 = '';
@@ -143,6 +146,4 @@ function del() {
             window.alert("删除失败!");
         }
     })
-}/**
- * Created by MI on 2019/2/22.
- */
+}
