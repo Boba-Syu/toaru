@@ -124,6 +124,11 @@ function search() {
         }
     })
 }
+$(document).ready(function(){
+    $(id2).keyup(function () {
+        search();
+    });
+});
 function del() {
     var user = new Object();
     user.cname = $.trim($(id2).val());
