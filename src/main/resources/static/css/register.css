@@ -1,0 +1,14 @@
+.btn-primary{
+    background-color: #6f42c1;
+    border-color: white;
+}
+h1{
+    color: #6f42c1;
+}
+.alert-success{
+    size: 300px;
+}
+.container-small
+{
+    max-width: 350px;
+}
