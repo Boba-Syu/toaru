@@ -52,6 +52,7 @@ function insertYes() {
             success: function (result) {
                 if(result == "success"){
                     window.alert("添加成功");
+                    search();
                     $(intable1).html('');
                     $(intable2).html('');
                     $(inbutton).html('');
