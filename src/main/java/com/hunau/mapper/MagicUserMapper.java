@@ -15,13 +15,21 @@ public interface MagicUserMapper {
     @Select("SELECT * FROM stu_c WHERE cname = #{cname}")
     public MagicUser select(String cname);
 
-    @Select("SELECT * FROM stu_c WHERE cname like CONCAT('%',#{name},'%') or csex like CONCAT('%',#{name},'%') or cschool like CONCAT('%',#{name},'%') or clevel like CONCAT('%',#{name},'%') or cpower like CONCAT('%',#{name},'%') or cgrade like CONCAT('%',#{name},'%')")
+    @Select("SELECT * FROM stu_c WHERE cname " +
+            "like CONCAT('%',#{name},'%') " +
+            "or csex like CONCAT('%',#{name},'%') " +
+            "or cschool like CONCAT('%',#{name},'%') " +
+            "or clevel like CONCAT('%',#{name},'%') " +
+            "or cpower like CONCAT('%',#{name},'%') " +
+            "or cgrade like CONCAT('%',#{name},'%')")
     public List<MagicUser> search(String name);
 
-    @Insert("INSERT INTO stu_c(cname,csex,cschool,clevel,cpower,cgrade) VALUES(#{cname}, #{csex}, #{cschool}, #{clevel}, #{cpower}, #{cgrade})")
+    @Insert("INSERT INTO stu_c(cname,csex,cschool,clevel,cpower,cgrade) " +
+            "VALUES(#{cname}, #{csex}, #{cschool}, #{clevel}, #{cpower}, #{cgrade})")
     public int insert(MagicUser magicUser);
 
-    @Update("UPDATE stu_c SET csex = #{n}, cschool = #{n}, clevel = #{n}, cpower = #{n}, cgrade = #{n} WHERE cname =#{cname}")
+    @Update("UPDATE stu_c " +
+            "SET csex = #{n}, cschool = #{n}, clevel = #{n}, cpower = #{n}, cgrade = #{n} WHERE cname =#{cname}")
     public int update(MagicUser magicUser);
 
     @Delete("DELETE FROM stu_c WHERE cname = #{cname}")

@@ -7,25 +7,25 @@ function insert() {
         insertn = 0;
         var str1 = '';
         var str2 = '';
-        str1 += '<thead>'
+        /*str1 += '<thead>'
             + '<th>姓名</th>'
             + '<th>性别</th>'
             + '<th>等级</th>'
-            + '</thead>';
+            + '</thead>';*/
         str1 += '<tbody>'
-            + '<td><input id="cname" type="text" class="form-control" placeholder="name"></td>'
-            + '<td><input id="csex" type="text" class="form-control" placeholder="sex"></td>'
-            + '<td><input id="clevel" type="text" class="form-control" placeholder="level"></td>'
+            + '<td><input id="cname" type="text" class="form-control" placeholder="姓名"></td>'
+            + '<td><input id="csex" type="text" class="form-control" placeholder="性别"></td>'
+            + '<td><input id="clevel" type="text" class="form-control" placeholder="等级"></td>'
             + '</tbody>';
-        str2 += '<thead>'
-            + '<th>能力</th>'
-            + '<th>学校</th>'
-            + '<th>年级</th>'
-            + '</thead>';
+        /*str2 += '<thead>'
+         + '<th>能力</th>'
+         + '<th>学校</th>'
+         + '<th>年级</th>'
+         + '</thead>';*/
         str2 += '<tbody>'
-            + '<td><input id="cpower" type="text" class="form-control" placeholder="power"></td>'
-            + '<td><input id="cschool" type="text" class="form-control" placeholder="school"></td>'
-            + '<td><input id="cgrade" type="text" class="form-control" placeholder="grade"></td>'
+            + '<td><input id="cpower" type="text" class="form-control" placeholder="能力"></td>'
+            + '<td><input id="cschool" type="text" class="form-control" placeholder="学校"></td>'
+            + '<td><input id="cgrade" type="text" class="form-control" placeholder="年级"></td>'
             + '</tbody>';
         $(intable1).html(str1);
         $(intable2).html(str2);
