@@ -1,41 +1,11 @@
 /**
  * Created by MI on 2019/2/22.
  */
-var insertn = 1;
 function insert() {
-    if(insertn == 1) {
-        insertn = 0;
-        var str1 = '';
-        var str2 = '';
-        /*str1 += '<thead>'
-            + '<th>姓名</th>'
-            + '<th>性别</th>'
-            + '<th>等级</th>'
-            + '</thead>';*/
-        str1 += '<tbody>'
-            + '<td><input id="cname" type="text" class="form-control" placeholder="姓名"></td>'
-            + '<td><input id="csex" type="text" class="form-control" placeholder="性别"></td>'
-            + '<td><input id="clevel" type="text" class="form-control" placeholder="等级"></td>'
-            + '</tbody>';
-        /*str2 += '<thead>'
-         + '<th>能力</th>'
-         + '<th>学校</th>'
-         + '<th>年级</th>'
-         + '</thead>';*/
-        str2 += '<tbody>'
-            + '<td><input id="cpower" type="text" class="form-control" placeholder="能力"></td>'
-            + '<td><input id="cschool" type="text" class="form-control" placeholder="学校"></td>'
-            + '<td><input id="cgrade" type="text" class="form-control" placeholder="年级"></td>'
-            + '</tbody>';
-        $(intable1).html(str1);
-        $(intable2).html(str2);
-        $(inbutton).html('<button onclick="insertYes()" type="button" class="btn-primary btn btn-default">确定</button>');
-    } else {
-        $(intable1).html('');
-        $(intable2).html('');
-        $(inbutton).html('');
-        insertn = 1;
-    }
+    $("#intable1").fadeToggle(200);
+    $("#intable2").fadeToggle(200);
+    $("#inbutton").fadeToggle(200);
+    search();
 }
 function insertYes() {
         $("#fm").serialize();
@@ -136,6 +106,10 @@ $(document).ready(function(){
     $(id2).keyup(function () {
         search();
     });
+    $("#intable1").fadeOut(1);
+    $("#intable2").fadeOut(1);
+    $("#inbutton").fadeOut(1);
+    search();
 });
 function del() {
     var user = new Object();
