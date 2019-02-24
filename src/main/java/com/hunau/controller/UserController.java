@@ -33,8 +33,8 @@ public class UserController {
         JSONObject j = JSONObject.fromObject(user);
         User user1 = (User) JSONObject.toBean(j, User.class);
         int result = userService.register(user1);
-        System.out.println(user);
-        System.out.println(user1);
+/*        System.out.println(user);
+        System.out.println(user1);*/
         if(result == 1) {
             return "success";
         } else {
