@@ -1,25 +1,30 @@
-#tbd{
-    overflow:scroll;
+#tbd {
+    overflow: scroll;
     height: 700px;
     width: 1344px;
 }
-#id2{
+
+#id2 {
     width: 400px;
 }
-#frosted-glass, #ncenter{
+
+#frosted-glass, #ncenter {
     width: 1344px;
     height: 884.6px;
 }
-#frosted-glass{
+
+#frosted-glass {
     margin-left: 300px;
     position: absolute;
 }
+
 #frosted-glass:after, body {
     background-image: url("../images/bilibili.jpg");
     background-size: cover;
     background-attachment: fixed;
 }
-#frosted-glass:after{
+
+#frosted-glass:after {
     margin: -30px;
     background-position: center top;
     -webkit-filter: blur(20px);
@@ -33,14 +38,16 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(255,255,255,0.8);
+    background-color: rgba(255, 255, 255, 0.8);
     z-index: -1;
 }
-body{
+
+body {
     background-repeat: no-repeat;
     overflow: hidden;
 }
-#ncenter{
+
+#ncenter {
     position: relative;
     display: block;
 }

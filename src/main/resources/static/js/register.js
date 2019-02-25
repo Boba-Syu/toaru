@@ -2,10 +2,10 @@
  * Created by MI on 2019/2/22.
  */
 function back() {
-    window.location.href="/toaru/login";
+    window.location.href = "/toaru/login";
 }
 function yes() {
-    if($(id2).val() == "" || $(pwd2).val() == "") {
+    if ($(id2).val() == "" || $(pwd2).val() == "") {
         window.alert("输入框内不能为空!");
     }
     else {
@@ -21,7 +21,7 @@ function yes() {
             success: function (result) {
                 if (result == "success") {
                     window.alert("注册成功");
-                    window.location.href="login";
+                    window.location.href = "login";
                 }
                 else {
                     window.alert("注册失败");
@@ -33,9 +33,9 @@ function yes() {
         })
     }
 }
-$(document).ready(function(){
+$(document).ready(function () {
     $("input").keyup(function (event) {
-        if(event.keyCode == 108 || event.keyCode == 13) {
+        if (event.keyCode == 108 || event.keyCode == 13) {
             yes();
         }
     });

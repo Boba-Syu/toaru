@@ -8,44 +8,44 @@ function insert() {
     search();
 }
 function insertYes() {
-        $("#fm").serialize();
-        var ObjectUser = new Object();
-        ObjectUser.cname = $.trim($(cname).val());
-        ObjectUser.csex = $.trim($(csex).val());
-        ObjectUser.clevel = $.trim($(clevel).val());
-        ObjectUser.cpower = $.trim($(cpower).val());
-        ObjectUser.cschool = $.trim($(cschool).val());
-        ObjectUser.cgrade = $.trim($(cgrade).val());
-        if( $.trim($(cname).val()) == '' || $.trim($(csex).val()) == '' || $.trim($(clevel).val()) == ''
-            || $.trim($(cpower).val()) == '' || $.trim($(cschool).val()) == '' || $.trim($(cgrade).val()) == ''){
-            window.alert("输入框内不能为空!");
-        } else {
-            $.ajax({
-                type: 'GET',
-                url: "/toaru/insert",
-                contentType : 'application/json',
-                timeout: 1000,
-                data: {ObjectUser:JSON.stringify(ObjectUser)},
-                dataType: 'text',
-                success: function (result) {
-                    if(result == "success"){
-                        window.alert("添加成功");
-                        search();
-                        $(intable1).html('');
-                        $(intable2).html('');
-                        $(inbutton).html('');
-                    } else {
-                        window.alert("添加失败!");
-                    }
-                },
-                error: function () {
-                    window.alert("添加错误!");
+    $("#fm").serialize();
+    var ObjectUser = new Object();
+    ObjectUser.cname = $.trim($(cname).val());
+    ObjectUser.csex = $.trim($(csex).val());
+    ObjectUser.clevel = $.trim($(clevel).val());
+    ObjectUser.cpower = $.trim($(cpower).val());
+    ObjectUser.cschool = $.trim($(cschool).val());
+    ObjectUser.cgrade = $.trim($(cgrade).val());
+    if ($.trim($(cname).val()) == '' || $.trim($(csex).val()) == '' || $.trim($(clevel).val()) == ''
+        || $.trim($(cpower).val()) == '' || $.trim($(cschool).val()) == '' || $.trim($(cgrade).val()) == '') {
+        window.alert("输入框内不能为空!");
+    } else {
+        $.ajax({
+            type: 'GET',
+            url: "/toaru/insert",
+            contentType: 'application/json',
+            timeout: 1000,
+            data: {ObjectUser: JSON.stringify(ObjectUser)},
+            dataType: 'text',
+            success: function (result) {
+                if (result == "success") {
+                    window.alert("添加成功");
+                    search();
+                    $(intable1).html('');
+                    $(intable2).html('');
+                    $(inbutton).html('');
+                } else {
+                    window.alert("添加失败!");
                 }
-            })
-        }
+            },
+            error: function () {
+                window.alert("添加错误!");
+            }
+        })
+    }
 }
 function back() {
-    window.location.href="/toaru";
+    window.location.href = "/toaru";
 }
 function yes() {
     $.ajax({
@@ -56,8 +56,8 @@ function yes() {
         dataType: 'json',
         success: function (data) {
             var str = '';
-            for(var i = 0; i < data.length; i++) {
-                str +='<tr>'
+            for (var i = 0; i < data.length; i++) {
+                str += '<tr>'
                     + '<td>' + data[i].cname + '</td>'
                     + '<td>' + data[i].csex + '</td>'
                     + '<td>' + data[i].cschool + '</td>'
@@ -81,12 +81,12 @@ function search() {
         type: 'get',
         url: "/toaru/search",
         timeout: 1000,
-        data: {ObjectUser:JSON.stringify(user)},
+        data: {ObjectUser: JSON.stringify(user)},
         dataType: 'json',
         success: function (data) {
             var str = '';
-            for(var i = 0; i < data.length; i++) {
-                str +='<tr>'
+            for (var i = 0; i < data.length; i++) {
+                str += '<tr>'
                     + '<td>' + data[i].cname + '</td>'
                     + '<td>' + data[i].csex + '</td>'
                     + '<td>' + data[i].cschool + '</td>'
@@ -102,7 +102,7 @@ function search() {
         }
     })
 }
-$(document).ready(function(){
+$(document).ready(function () {
     $(id2).keyup(function () {
         search();
     });
@@ -118,9 +118,9 @@ function del() {
         type: 'get',
         url: "/toaru/delete",
         timeout: 1000,
-        data: {ObjectUser:JSON.stringify(user)},
+        data: {ObjectUser: JSON.stringify(user)},
         dataType: 'text',
-        success: function(result) {
+        success: function (result) {
             if (result != "success") {
                 window.alert("删除失败");
                 yes();

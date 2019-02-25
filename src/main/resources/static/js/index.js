@@ -2,18 +2,18 @@
  * Created by MI on 2019/2/22.
  */
 function hello() {
-    window.location.href="hello";
+    window.location.href = "hello";
 }
 function login() {
-    window.location.href="login";
+    window.location.href = "login";
 }
 function register() {
-    window.location.href="register";
+    window.location.href = "register";
 }
 $(document).ready(function () {
     $.ajax({
         success: function () {
-            setTimeout(yes,2100);
+            setTimeout(yes, 2100);
         }
     })
 });

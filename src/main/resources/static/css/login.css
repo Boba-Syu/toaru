@@ -1,18 +1,21 @@
-.btn-primary{
-    background-color: #4f7ac1;
-    border-color: white;
-}
-h1{
+.btn-primary {
+     background-color: #4f7ac1;
+     border-color: white;
+ }
+
+h1 {
     color: #4f7ac1;
 }
-.alert-success{
+
+.alert-success {
     size: 300px;
 }
-.container-small
-{
+
+.container-small {
     max-width: 350px;
 }
-body{
+
+body {
     background-image: url(../images/MISAKA2.png);
     background-repeat: no-repeat;
     background-size: 75%;

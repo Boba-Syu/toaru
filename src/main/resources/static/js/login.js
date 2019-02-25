@@ -2,13 +2,13 @@
  * Created by MI on 2019/2/22.
  */
 function register() {
-    window.location.href="register";
+    window.location.href = "register";
 }
 function back() {
-    window.location.href="/toaru";
+    window.location.href = "/toaru";
 }
 function yes2() {
-    if($(id2).val() == "" || $(pwd2).val() == "") {
+    if ($(id2).val() == "" || $(pwd2).val() == "") {
         window.alert("输入框内不能为空!");
     }
     else {
@@ -19,13 +19,13 @@ function yes2() {
         $.ajax({
             type: 'GET',
             url: "/toaru/userLogin",
-            contentType : 'application/json',
+            contentType: 'application/json',
             timeout: 1000,
-            data: {ObjectUser:JSON.stringify(user)},
+            data: {ObjectUser: JSON.stringify(user)},
             dataType: 'text',
-            success: function(result) {
-                if(result == "success"){
-                    window.location.href="magic";
+            success: function (result) {
+                if (result == "success") {
+                    window.location.href = "magic";
                 }
                 else {
                     window.alert("登陆失败");
@@ -37,9 +37,9 @@ function yes2() {
         })
     }
 }
-$(document).ready(function(){
+$(document).ready(function () {
     $("input").keyup(function (event) {
-        if(event.keyCode == 108 || event.keyCode == 13) {
+        if (event.keyCode == 108 || event.keyCode == 13) {
             yes2();
         }
     });
