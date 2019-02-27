@@ -29,7 +29,8 @@ public interface MagicUserMapper {
     public int insert(MagicUser magicUser);
 
     @Update("UPDATE stu_c " +
-            "SET csex = #{n}, cschool = #{n}, clevel = #{n}, cpower = #{n}, cgrade = #{n} WHERE cname =#{cname}")
+            "SET csex = #{n}, cschool = #{n}, clevel = #{n}, cpower = #{n}, cgrade = #{n} " +
+            "WHERE cname =#{cname}")
     public int update(MagicUser magicUser);
 
     @Delete("DELETE FROM stu_c WHERE cname = #{cname}")
