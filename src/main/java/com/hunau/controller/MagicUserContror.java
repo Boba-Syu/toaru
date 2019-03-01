@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.concurrent.Callable;
 
 /**
  * Created by MI on 2019/2/1.
@@ -22,67 +23,108 @@ public class MagicUserContror {
     private magicUserService userService;
 
     @RequestMapping("/select")
-    public MagicUser select(@RequestParam(value = "ObjectUser") String user) {
-        JSONObject j = JSONObject.fromObject(user);
-        MagicUser user1 = (MagicUser) JSONObject.toBean(j, MagicUser.class);
-        return userService.select(user1.getCname());
+    public Callable<MagicUser> select(@RequestParam(value = "ObjectUser") String user) {
+        Callable<MagicUser> callable = new Callable<MagicUser>() {
+            @Override
+            public MagicUser call() throws Exception {
+                JSONObject j = JSONObject.fromObject(user);
+                MagicUser user1 = (MagicUser) JSONObject.toBean(j, MagicUser.class);
+                return userService.select(user1.getCname());
+            }
+        };
+        return callable;
     }
 
     @RequestMapping("/search")
-    public List<MagicUser> search(@RequestParam(value = "ObjectUser") String user) {
-        JSONObject j = JSONObject.fromObject(user);
-        MagicUser user1 = (MagicUser)JSONObject.toBean(j, MagicUser.class);
-        return userService.search(user1.getCname());
+    public Callable<List<MagicUser>> search(@RequestParam(value = "ObjectUser") String user) {
+        Callable<List<MagicUser>> callable = new Callable<List<MagicUser>>() {
+            @Override
+            public List<MagicUser> call() throws Exception {
+                JSONObject j = JSONObject.fromObject(user);
+                MagicUser user1 = (MagicUser) JSONObject.toBean(j, MagicUser.class);
+                return userService.search(user1.getCname());
+            }
+        };
+        return callable;
     }
 
     @RequestMapping("/select2")
-    public String select2(@RequestParam(value = "ObjectUser") String user) {
-        JSONObject j = JSONObject.fromObject(user);
-        MagicUser user1 = (MagicUser)JSONObject.toBean(j, MagicUser.class);
-        MagicUser user2 = userService.select(user1.getCname());
-        if(user2.getCname().equals(user1.getCname()))
-            return "success";
-        else
-            return "defeat";
+    public Callable<String> select2(@RequestParam(value = "ObjectUser") String user) {
+        Callable<String> callable = new Callable<String>() {
+            public String call() throws Exception {
+                JSONObject j = JSONObject.fromObject(user);
+                MagicUser user1 = (MagicUser) JSONObject.toBean(j, MagicUser.class);
+                MagicUser user2 = userService.select(user1.getCname());
+                if (user2.getCname().equals(user1.getCname()))
+                    return "success";
+                else
+                    return "defeat";
+            }
+        };
+        return callable;
     }
 
     @RequestMapping("/insert")
-    public String insert(@RequestParam(value = "ObjectUser") String user) {
-        JSONObject j = JSONObject.fromObject(user);
-        MagicUser user1 = (MagicUser)JSONObject.toBean(j, MagicUser.class);
-        int result = userService.insert(user1);
-        if(result==1) {
-            return "success";
-        }else {
-            return "defeat";
-        }
+    public Callable<String> insert(@RequestParam(value = "ObjectUser") String user) {
+        Callable<String> callable = new Callable<String>() {
+            @Override
+            public String call() throws Exception {
+                JSONObject j = JSONObject.fromObject(user);
+                MagicUser user1 = (MagicUser) JSONObject.toBean(j, MagicUser.class);
+                int result = userService.insert(user1);
+                if (result == 1) {
+                    return "success";
+                } else {
+                    return "defeat";
+                }
+            }
+        };
+        return callable;
     }
 
     @RequestMapping("/update")
-    public String update(@RequestParam(value = "ObjectUser") MagicUser user) {
-        int result = userService.update(user);
-        if(result==1) {
-            return "success";
-        }else {
-            return "defeat";
-        }
+    public Callable<String> update(@RequestParam(value = "ObjectUser") MagicUser user) {
+        Callable<String> callable = new Callable<String>() {
+            @Override
+            public String call() throws Exception {
+                int result = userService.update(user);
+                if (result == 1) {
+                    return "success";
+                } else {
+                    return "defeat";
+                }
+            }
+        };
+        return callable;
     }
 
     @RequestMapping("/delete")
-    public String delete(@RequestParam(value = "ObjectUser") String user) {
-        JSONObject j = JSONObject.fromObject(user);
-        MagicUser user1 = (MagicUser)JSONObject.toBean(j, MagicUser.class);
-        int result = userService.delete(user1.getCname());
-        if(result == 1) {
-            return "success";
-        }else {
-            return "defeat";
-        }
+    public Callable<String> delete(@RequestParam(value = "ObjectUser") String user) {
+        Callable<String> callable = new Callable<String>() {
+            @Override
+            public String call() throws Exception {
+                JSONObject j = JSONObject.fromObject(user);
+                MagicUser user1 = (MagicUser) JSONObject.toBean(j, MagicUser.class);
+                int result = userService.delete(user1.getCname());
+                if (result == 1) {
+                    return "success";
+                } else {
+                    return "defeat";
+                }
+            }
+        };
+        return callable;
     }
 
     @RequestMapping("/show2")
-    public List<MagicUser> show() {
-        List<MagicUser> users = userService.showAll();
-        return users;
+    public Callable<List<MagicUser>> show() {
+        Callable<List<MagicUser>> callable = new Callable<List<MagicUser>>() {
+            @Override
+            public List<MagicUser> call() throws Exception {
+                List<MagicUser> users = userService.showAll();
+                return users;
+            }
+        };
+        return callable;
     }
 }
