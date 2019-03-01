@@ -26,7 +26,7 @@ public class UserController {
                 JSONObject j = JSONObject.fromObject(user);
                 User user1 = (User) JSONObject.toBean(j, User.class);
                 User user2 = userService.login(user1.getName());
-                if( user1.getPwd().equals(user2.getPwd()) ) {
+                if (user1.getPwd().equals(user2.getPwd())) {
                     return "success";
                 } else {
                     return "defeat";
@@ -34,7 +34,6 @@ public class UserController {
             }
         };
         return callable;
-
     }
 
     @RequestMapping("userRegister")
@@ -45,7 +44,7 @@ public class UserController {
                 JSONObject j = JSONObject.fromObject(user);
                 User user1 = (User) JSONObject.toBean(j, User.class);
                 int result = userService.register(user1);
-                if(result == 1) {
+                if (result == 1) {
                     return "success";
                 } else {
                     return "defeat";
