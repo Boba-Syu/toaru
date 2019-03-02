@@ -1,5 +1,6 @@
 package com.hunau;
 
+import com.hunau.entty.BroadcastMain;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -10,6 +11,7 @@ public class ToaruApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(ToaruApplication.class, args);
+        BroadcastMain.broadcastMain();
 	}
 
 }

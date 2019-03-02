@@ -1,9 +1,10 @@
 package com.hunau.controller;
 
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
+        import com.hunau.entty.BroadcastMain;
+        import org.springframework.stereotype.Controller;
+        import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.util.concurrent.Callable;
+        import java.util.concurrent.Callable;
 
 /**
  * Created by MI on 2019/2/1.
@@ -50,6 +51,18 @@ public class Htmlcontroller {
             @Override
             public String call() throws Exception {
                 return "magic";
+            }
+        };
+        return callable;
+    }
+
+    @RequestMapping("/entty")
+    public Callable<String> entty() {
+        //BroadcastMain.broadcastMain();
+        Callable<String> callable = new Callable<String>() {
+            @Override
+            public String call() throws Exception {
+                return "entty";
             }
         };
         return callable;

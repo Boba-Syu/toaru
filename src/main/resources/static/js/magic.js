@@ -134,3 +134,6 @@ function del() {
         }
     })
 }
+function entty() {
+    window.location.href = "/toaru/entty";
+}
