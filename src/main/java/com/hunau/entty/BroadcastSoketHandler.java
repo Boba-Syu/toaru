@@ -121,9 +121,9 @@ public class BroadcastSoketHandler extends SimpleChannelInboundHandler<Object> {
             Channel incoming = ctx.channel();
             for (Channel channel : BroadcastConfig.group) {
                 if (channel != incoming) {
-                    channel.writeAndFlush(new TextWebSocketFrame("[" + incoming.remoteAddress() + "]" + msg.text()));
+                    channel.writeAndFlush(new TextWebSocketFrame(msg.text()));
                 } else {
-                    channel.writeAndFlush(new TextWebSocketFrame("[you]" + msg.text()));
+                    channel.writeAndFlush(new TextWebSocketFrame(msg.text()));
                 }
             }
         }
