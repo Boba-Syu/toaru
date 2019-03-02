@@ -10,6 +10,9 @@ import io.netty.handler.codec.http.HttpVersion;
 import io.netty.handler.codec.http.websocketx.*;
 import io.netty.util.CharsetUtil;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 /**
  * Created by MI on 2019/3/2.
  * 接受/处理/响应webSocket请求的核心业务处理类
@@ -50,7 +53,9 @@ public class BroadcastSoketHandler extends SimpleChannelInboundHandler<Object> {
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
         Channel incoming = ctx.channel();
-        System.out.println("Client:" + incoming.remoteAddress() + "在线");
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
+        String date = df.format(new Date());// new Date()为获取当前系统时间，也可使用当前时间戳
+        System.out.println(date + "  Client:" + incoming.remoteAddress() + "在线");
     }
 
     /*
@@ -59,7 +64,9 @@ public class BroadcastSoketHandler extends SimpleChannelInboundHandler<Object> {
     @Override
     public void channelInactive(ChannelHandlerContext ctx) throws Exception {
         Channel incoming = ctx.channel();
-        System.out.println("Client:" + incoming.remoteAddress() + "掉线");
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
+        String date = df.format(new Date());// new Date()为获取当前系统时间，也可使用当前时间戳
+        System.out.println(date + "  Client:" + incoming.remoteAddress() + "掉线");
     }
 
     /**
@@ -77,14 +84,16 @@ public class BroadcastSoketHandler extends SimpleChannelInboundHandler<Object> {
     @Override
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
         Channel incoming = ctx.channel();
-        System.out.println("Client:" + incoming.remoteAddress() + "异常");
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
+        String date = df.format(new Date());// new Date()为获取当前系统时间，也可使用当前时间戳
+        System.out.println(date + "  Client:" + incoming.remoteAddress() + "异常");
         cause.printStackTrace();
         ctx.close();
     }
 
     /**
      * 服务端处理客户端webSocket请求的核心方法。
-     *
+     * <p>
      * 如果你使用的是 Netty 5.x 版本时，需要把 channelRead0() 重命名为messageReceived()
      */
     @Override
@@ -120,10 +129,13 @@ public class BroadcastSoketHandler extends SimpleChannelInboundHandler<Object> {
             TextWebSocketFrame msg = (TextWebSocketFrame) frame;
             Channel incoming = ctx.channel();
             for (Channel channel : BroadcastConfig.group) {
+                SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
+                String date = df.format(new Date());// new Date()为获取当前系统时间，也可使用当前时间戳
                 if (channel != incoming) {
-                    channel.writeAndFlush(new TextWebSocketFrame(msg.text()));
+                    channel.writeAndFlush(new TextWebSocketFrame("[" + date + "] " + msg.text()));
                 } else {
-                    channel.writeAndFlush(new TextWebSocketFrame(msg.text()));
+                    //channel.writeAndFlush(new TextWebSocketFrame("[" + incoming.remoteAddress() + "]" + msg.text()));
+                    channel.writeAndFlush(new TextWebSocketFrame("[" + date + "] " + msg.text()));
                 }
             }
         }
