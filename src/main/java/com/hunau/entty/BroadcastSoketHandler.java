@@ -129,7 +129,7 @@ public class BroadcastSoketHandler extends SimpleChannelInboundHandler<Object> {
             TextWebSocketFrame msg = (TextWebSocketFrame) frame;
             Channel incoming = ctx.channel();
             for (Channel channel : BroadcastConfig.group) {
-                SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");//设置日期格式
+                SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
                 String date = df.format(new Date());// new Date()为获取当前系统时间，也可使用当前时间戳
                 if (channel != incoming) {
                     channel.writeAndFlush(new TextWebSocketFrame("[" + date + "] " + msg.text()));
