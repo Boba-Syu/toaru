@@ -6,7 +6,7 @@ div {
     text-align: center;
 }
 
-#progress {
+#progress { /* 进度条设置 */
     animation-duration: 2s;
     animation-name: an;
     animation-timing-function: linear;
@@ -14,7 +14,7 @@ div {
     width: 100%;
 }
 
-@keyframes an {
+@keyframes an { /* 进度条的动画效果 */
     0% {
         width: 0%;
     }

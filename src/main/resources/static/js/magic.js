@@ -1,13 +1,13 @@
 /**
  * Created by MI on 2019/2/22.
  */
-function insert() {
+function insert() { //插入按钮功能设置
     $("#intable1").fadeToggle(200);
     $("#intable2").fadeToggle(200);
     $("#inbutton").fadeToggle(200);
     search();
 }
-function insertYes() {
+function insertYes() { // 插入操作的确定功能设置
     $("#fm").serialize();
     var ObjectUser = new Object();
     ObjectUser.cname = $.trim($(cname).val());
@@ -44,10 +44,10 @@ function insertYes() {
         })
     }
 }
-function back() {
+function back() { // 返回按钮功能设置
     window.location.href = "/toaru";
 }
-function yes() {
+function yes() { // 刷新按钮功能设置
     $.ajax({
         type: 'get',
         url: "/toaru/show2",
@@ -74,7 +74,7 @@ function yes() {
         }
     })
 }
-function search() {
+function search() { // 搜索功能设置
     var user = new Object();
     user.cname = $.trim($(id2).val());
     $.ajax({
@@ -103,7 +103,7 @@ function search() {
     })
 }
 $(document).ready(function () {
-    $(id2).keyup(function () {
+    $(id2).keyup(function () { // 当聚焦在搜索框时, 调用search()函数
         search();
     });
     $("#intable1").fadeOut(1);
@@ -111,7 +111,7 @@ $(document).ready(function () {
     $("#inbutton").fadeOut(1);
     search();
 });
-function del() {
+function del() { // 删除按钮功能设置
     var user = new Object();
     user.cname = $.trim($(id2).val());
     $.ajax({
@@ -134,6 +134,6 @@ function del() {
         }
     })
 }
-function entty() {
+function entty() { // 广播信息按钮功能设置
     window.location.href = "/toaru/entty";
 }

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 /**
  * Created by MI on 2019/2/7.
+ * 对应表stu_user的映射
  */
 @Repository
 public interface UserMapper {

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 
 /**
  * Created by MI on 2019/2/7.
+ * 连接UserMapping和UserController的服务层
  */
 @Repository
 public class UserService {

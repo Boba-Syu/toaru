@@ -1,6 +1,8 @@
 /**
  * Created by MI on 2019/3/2.
+ * 对应entty.html的js文件
  */
+//发送信息到后端, 实时连接
 var socket;
 if (!window.WebSocket) {
     window.WebSocket = window.MozWebSocket;
@@ -22,7 +24,9 @@ if (window.WebSocket) {
 } else {
     alert("你的浏览器不支持 WebSocket！\n");
 }
-function send(message) {
+
+function send(message) { // 发送按钮功能设置
+
     if (!window.WebSocket) {
         return;
     }
@@ -32,6 +36,7 @@ function send(message) {
         alert("连接没有开启.\n");
     }
 }
-function refresh2() {
+
+function refresh2() { // 刷新按钮功能设置
     javascript:document.getElementById('responseText').value = '';
 }

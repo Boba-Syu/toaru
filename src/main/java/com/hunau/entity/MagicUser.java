@@ -2,6 +2,7 @@ package com.hunau.entity;
 
 /**
  * Created by MI on 2019/2/1.
+ * 对应表stu_m的JavaBean实体类
  */
 public class MagicUser {
     String cname;

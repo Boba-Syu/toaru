@@ -2,6 +2,7 @@ package com.hunau.entity;
 
 /**
  * Created by MI on 2019/2/7.
+ * 对应表stu_user的JavaBean实体类
  */
 public class User {
     String name;

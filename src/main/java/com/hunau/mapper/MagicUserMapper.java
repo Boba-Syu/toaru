@@ -8,6 +8,7 @@ import java.util.List;
 
 /**
  * Created by MI on 2019/2/1.
+ * 对表stu_m的映射
  */
 @Repository
 public interface MagicUserMapper {

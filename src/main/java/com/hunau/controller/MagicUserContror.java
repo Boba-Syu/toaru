@@ -16,6 +16,7 @@ import java.util.concurrent.Callable;
 
 /**
  * Created by MI on 2019/2/1.
+ * 对stu_m表(magic界面信息展示用)的操作
  */
 @RestController
 public class MagicUserContror {
@@ -23,7 +24,7 @@ public class MagicUserContror {
     private magicUserService userService;
 
     @RequestMapping("/select")
-    public Callable<MagicUser> select(@RequestParam(value = "ObjectUser") String user) {
+    public Callable<MagicUser> select(@RequestParam(value = "ObjectUser") String user) { // 查找单行数据(暂时没用上)
         Callable<MagicUser> callable = new Callable<MagicUser>() {
             @Override
             public MagicUser call() throws Exception {
@@ -36,7 +37,7 @@ public class MagicUserContror {
     }
 
     @RequestMapping("/search")
-    public Callable<List<MagicUser>> search(@RequestParam(value = "ObjectUser") String user) {
+    public Callable<List<MagicUser>> search(@RequestParam(value = "ObjectUser") String user) { // 查找相匹配的数据(搜索用)
         Callable<List<MagicUser>> callable = new Callable<List<MagicUser>>() {
             @Override
             public List<MagicUser> call() throws Exception {
@@ -48,24 +49,8 @@ public class MagicUserContror {
         return callable;
     }
 
-    @RequestMapping("/select2")
-    public Callable<String> select2(@RequestParam(value = "ObjectUser") String user) {
-        Callable<String> callable = new Callable<String>() {
-            public String call() throws Exception {
-                JSONObject j = JSONObject.fromObject(user);
-                MagicUser user1 = (MagicUser) JSONObject.toBean(j, MagicUser.class);
-                MagicUser user2 = userService.select(user1.getCname());
-                if (user2.getCname().equals(user1.getCname()))
-                    return "success";
-                else
-                    return "defeat";
-            }
-        };
-        return callable;
-    }
-
     @RequestMapping("/insert")
-    public Callable<String> insert(@RequestParam(value = "ObjectUser") String user) {
+    public Callable<String> insert(@RequestParam(value = "ObjectUser") String user) { // 插入数据
         Callable<String> callable = new Callable<String>() {
             @Override
             public String call() throws Exception {
@@ -83,7 +68,7 @@ public class MagicUserContror {
     }
 
     @RequestMapping("/update")
-    public Callable<String> update(@RequestParam(value = "ObjectUser") MagicUser user) {
+    public Callable<String> update(@RequestParam(value = "ObjectUser") MagicUser user) { // 更新某行数据
         Callable<String> callable = new Callable<String>() {
             @Override
             public String call() throws Exception {
@@ -99,7 +84,7 @@ public class MagicUserContror {
     }
 
     @RequestMapping("/delete")
-    public Callable<String> delete(@RequestParam(value = "ObjectUser") String user) {
+    public Callable<String> delete(@RequestParam(value = "ObjectUser") String user) { //删除某行数据
         Callable<String> callable = new Callable<String>() {
             @Override
             public String call() throws Exception {
@@ -118,7 +103,7 @@ public class MagicUserContror {
 
     @RequestMapping("/show2")
     public Callable<List<MagicUser>> show() {
-        Callable<List<MagicUser>> callable = new Callable<List<MagicUser>>() {
+        Callable<List<MagicUser>> callable = new Callable<List<MagicUser>>() { // 查询表中所有数据(刷新用)
             @Override
             public List<MagicUser> call() throws Exception {
                 List<MagicUser> users = userService.showAll();

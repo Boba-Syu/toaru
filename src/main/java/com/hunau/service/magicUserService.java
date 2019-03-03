@@ -9,6 +9,7 @@ import java.util.List;
 
 /**
  * Created by MI on 2019/2/1.
+ * 连接MagicUserMapper和MagicUserController的服务层
  */
 @Repository
 public class magicUserService {

@@ -1,10 +1,10 @@
 /**
  * Created by MI on 2019/2/22.
  */
-function back() {
+function back() { // 返回按钮功能设置
     window.location.href = "/toaru/login";
 }
-function yes() {
+function yes() { // 确定按钮功能设置
     if ($(id2).val() == "" || $(pwd2).val() == "") {
         window.alert("输入框内不能为空!");
     }
@@ -34,7 +34,7 @@ function yes() {
     }
 }
 $(document).ready(function () {
-    $("input").keyup(function (event) {
+    $("input").keyup(function (event) { // 当聚焦在输入框时, 回车键功能设置
         if (event.keyCode == 108 || event.keyCode == 13) {
             yes();
         }

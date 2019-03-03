@@ -12,6 +12,7 @@ import java.util.concurrent.Callable;
 
 /**
  * Created by MI on 2019/2/7.
+ * 对stu_user表(用户登录/注册用)进行操作
  */
 @RestController
 public class UserController {
@@ -19,7 +20,7 @@ public class UserController {
     UserService userService;
 
     @RequestMapping("userLogin")
-    public Callable<String> userLogin(@RequestParam(value = "ObjectUser") String user) {
+    public Callable<String> userLogin(@RequestParam(value = "ObjectUser") String user) { // 查找单行数据(登录用)
         Callable<String> callable = new Callable<String>() {
             @Override
             public String call() throws Exception {
@@ -37,7 +38,7 @@ public class UserController {
     }
 
     @RequestMapping("userRegister")
-    public Callable<String> userRegister(@RequestParam(value = "ObjectUser") String user) {
+    public Callable<String> userRegister(@RequestParam(value = "ObjectUser") String user) { // 插入数据(注册用)
         Callable<String> callable = new Callable<String>() {
             @Override
             public String call() throws Exception {
