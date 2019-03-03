@@ -53,7 +53,7 @@ public class BroadcastSoketHandler extends SimpleChannelInboundHandler<Object> {
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
         Channel incoming = ctx.channel();
-        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");//设置日期格式
         String date = df.format(new Date());// new Date()为获取当前系统时间，也可使用当前时间戳
         System.out.println(date + "  Client:" + incoming.remoteAddress() + "在线");
     }
@@ -64,7 +64,7 @@ public class BroadcastSoketHandler extends SimpleChannelInboundHandler<Object> {
     @Override
     public void channelInactive(ChannelHandlerContext ctx) throws Exception {
         Channel incoming = ctx.channel();
-        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");//设置日期格式
         String date = df.format(new Date());// new Date()为获取当前系统时间，也可使用当前时间戳
         System.out.println(date + "  Client:" + incoming.remoteAddress() + "掉线");
     }
@@ -84,7 +84,7 @@ public class BroadcastSoketHandler extends SimpleChannelInboundHandler<Object> {
     @Override
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
         Channel incoming = ctx.channel();
-        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");//设置日期格式
         String date = df.format(new Date());// new Date()为获取当前系统时间，也可使用当前时间戳
         System.out.println(date + "  Client:" + incoming.remoteAddress() + "异常");
         cause.printStackTrace();
@@ -129,7 +129,7 @@ public class BroadcastSoketHandler extends SimpleChannelInboundHandler<Object> {
             TextWebSocketFrame msg = (TextWebSocketFrame) frame;
             Channel incoming = ctx.channel();
             for (Channel channel : BroadcastConfig.group) {
-                SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
+                SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");//设置日期格式
                 String date = df.format(new Date());// new Date()为获取当前系统时间，也可使用当前时间戳
                 if (channel != incoming) {
                     channel.writeAndFlush(new TextWebSocketFrame("[" + date + "] " + msg.text()));

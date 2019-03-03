@@ -6,6 +6,9 @@ import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 /**
  * Created by MI on 2019/3/2.
  */
@@ -17,17 +20,19 @@ public class BroadcastMain {
     public static void broadcastMain() {
         EventLoopGroup bossGroup = new NioEventLoopGroup();
         EventLoopGroup workGroup = new NioEventLoopGroup();
-        try{
+        try {
             ServerBootstrap b = new ServerBootstrap();
             b.group(bossGroup, workGroup);
             b.channel(NioServerSocketChannel.class);
             b.childHandler(new BroadcastSocketChannelHandler());
-            System.out.println("服务端开启等待客户端连接...");
+            SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");//设置日期格式
+            String date = df.format(new Date());// new Date()为获取当前系统时间，也可使用当前时间戳
+            System.out.println(date + "  服务端开启等待客户端连接...");
             Channel ch = b.bind(BroadcastConfig.port).sync().channel();
             ch.closeFuture().sync();
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
-        }finally{
+        } finally {
             //优雅的退出程序
             bossGroup.shutdownGracefully();
             workGroup.shutdownGracefully();
