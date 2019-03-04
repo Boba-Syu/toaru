@@ -3,10 +3,13 @@
  * 对应entty.html的js文件
  */
 //发送信息到后端, 实时连接
+
 var socket;
+
 if (!window.WebSocket) {
     window.WebSocket = window.MozWebSocket;
 }
+
 if (window.WebSocket) {
     socket = new WebSocket("ws://localhost:8888/websocket");
     socket.onmessage = function (event) {
@@ -15,11 +18,11 @@ if (window.WebSocket) {
     };
     socket.onopen = function (event) {
         var ta = document.getElementById('responseText');
-        ta.value = "[" + getdate() + "] [系统]  " + "连接开启!\n";
+        ta.value = "[" + getdate() + "] [系统]  " + "连接已开启\n";
     };
     socket.onclose = function (event) {
         var ta = document.getElementById('responseText');
-        ta.value = ta.value + "[" + getdate() + "] [系统]  " + "连接被关闭\n";
+        ta.value = ta.value + "[" + getdate() + "] [系统]  " + "连接已关闭\n";
     };
 } else {
     alert("你的浏览器不支持 WebSocket！\n");
@@ -31,10 +34,36 @@ function send(message) { // 发送按钮功能设置
         return;
     }
     if (socket.readyState == WebSocket.OPEN) {
+        insert();
         socket.send(message);
     } else {
         alert("连接没有开启.\n");
     }
+}
+
+function insert() {
+    /*str = '['+this.form.name1.value+'] '+this.form.message.value;*/
+    var ObjectMessage = new Object();
+    ObjectMessage.name = $.trim($(name1).val());
+    ObjectMessage.text = $.trim($(message1).val());
+    ObjectMessage.time = getdate();
+    $.ajax({
+        type: 'GET',
+        url: "/toaru/messageInsert",
+        contentType: 'application/json',
+        timeout: 1000,
+        data: {ObjectMessage: JSON.stringify(ObjectMessage)},
+        dataType: 'text',
+        success: function (result) {
+            if (result == "success") {
+            } else {
+                window.alert($.trim($(name1).val()));
+            }
+        },
+        error: function () {
+            window.alert($.trim($(name1).val()));
+        }
+    })
 }
 
 function getdate() {
@@ -48,4 +77,27 @@ function getdate() {
 function refresh2() { // 刷新按钮功能设置
     javascript:document.getElementById('responseText').value = '';
 }
-    
+
+function back2() {
+    window.location.href = "magic";
+}
+
+$(document).ready(function () { // 当页面加载完成时
+    $.ajax({
+        type: 'get',
+        url: "/toaru/messageSelect",
+        timeout: 1000,
+        data: {},
+        dataType: 'json',
+        success: function (data) {
+            var str = '';
+            for (var i = 0; i < data.length; i++) {
+                str += '[' + data[i].time +'] [' +data[i].name + '] ' + data[i].text + '\n' ;
+            }
+            var ta = document.getElementById('responseText');
+            ta.value += str;
+        },
+        error: function () {
+        }
+    })
+});

@@ -6,7 +6,7 @@
     <link rel="stylesheet" th:href="@{https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css}">
     <link rel="stylesheet" th:href="@{css/entty.css}">
     <meta charset="UTF-8">
-    <title>WebSocket Chat</title>
+    <title>WebSocket</title>
 </head>
 <body>
 <form align="center" onsubmit="return false;">
@@ -20,7 +20,7 @@
                 <input type="text" id="name1" class="form-control" placeholder="请输入用户名" value="匿名用户">
             </td>
             <td>
-                <input type="text" id="message" name="message" class="form-control" placeholder="请输入信息" value="Hello!">
+                <input type="text" id="message1" name="message" class="form-control" placeholder="请输入信息" value="Hello!">
             </td>
             </tbody>
         </table>
@@ -28,6 +28,7 @@
             <button class="btn btn-primary btn-sm btn-default"
                     onclick="send('['+this.form.name1.value+'] '+this.form.message.value)">发送</button>
             <button class="btn btn-primary btn-sm btn-default" onclick="refresh2()">清空</button>
+            <button class="btn btn-primary btn-sm btn-default" onclick="back2()">返回</button>
         </div>
     </div>
 </form>
