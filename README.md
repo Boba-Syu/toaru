@@ -3,7 +3,9 @@
 尝试用大二寒假新学的springboot来重新写一下大二数据库课程设计, 作为springboot练手
 
 环境: JDK:1.8  maven:3.6.0  MySQL:5.6.23
+
 开发工具: IntelliJ IDEA 2017.1 x64
+
 数据库备份在工程的"toaru\src\main\resources\mysql_backcup"目录中
 
 本人在刚开始学springboot时建立的工程, 在此之前也敲代码仅限于做计算和垃圾得不能再垃圾的oj题, 所以对我来说这也算是跨出了新的一步了
