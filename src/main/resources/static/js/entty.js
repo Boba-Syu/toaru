@@ -18,7 +18,7 @@ if (window.WebSocket) {
     };
     socket.onopen = function (event) {
         var ta = document.getElementById('responseText');
-        ta.value = "[" + getdate() + "] [系统]  " + "连接已开启\n";
+        ta.value = "";//"[" + getdate() + "] [系统]  " + "连接已开启\n";
     };
     socket.onclose = function (event) {
         var ta = document.getElementById('responseText');
@@ -61,7 +61,7 @@ function insert() {
             }
         },
         error: function () {
-            window.alert($.trim($(name1).val())+$.trim($(name1).val()));
+            window.alert($.trim($(name1).val()) + $.trim($(name1).val()));
         }
     })
 }
@@ -92,7 +92,7 @@ $(document).ready(function () { // 当页面加载完成时
         success: function (data) {
             var str = '';
             for (var i = 0; i < data.length; i++) {
-                str += '[' + data[i].time +'] [' +data[i].name + '] ' + data[i].text + '\n' ;
+                str += '[' + data[i].time + '] [' + data[i].name + '] ' + data[i].text + '\n';
             }
             var ta = document.getElementById('responseText');
             ta.value += str;
