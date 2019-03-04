@@ -13,10 +13,9 @@ import java.util.List;
  */
 @Repository
 public interface MessageMapper {
-    @Select("SELECT * FROM stu_message")
+    @Select("SELECT * FROM stu_message ORDER BY time")
     public List<Message> select();
 
-    @Insert("INSERT INTO stu_message(name, time, text) " +
-            "VALUES( #{name}, #{time}, #{text} )")
+    @Insert("INSERT INTO stu_message(name, time, text) VALUES( #{name}, #{time}, #{text} )")
     public int insert(Message message);
 }
