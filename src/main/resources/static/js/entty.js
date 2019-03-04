@@ -29,7 +29,6 @@ if (window.WebSocket) {
 }
 
 function send(message) { // 发送按钮功能设置
-
     if (!window.WebSocket) {
         return;
     }
