@@ -14,7 +14,7 @@ if (window.WebSocket) {
     socket = new WebSocket("ws://localhost:8888/websocket");
     socket.onmessage = function (event) {
         var ta = document.getElementById('responseText');
-        ta.value = ta.value + event.data + '\n';
+        ta.value = ta.value + event.data + '\n\n';
     };
     socket.onopen = function (event) {
         var ta = document.getElementById('responseText');
@@ -96,7 +96,7 @@ $(document).ready(function () { // 当页面加载完成时
         success: function (data) {
             var str = '';
             for (var i = 0; i < data.length; i++) {
-                str += '[' + data[i].time + '] [' + data[i].name + '] ' + data[i].text + '\n';
+                str += '[' + data[i].time + '] [' + data[i].name + '] ' + data[i].text + '\n\n';
             }
             var ta = document.getElementById('responseText');
             ta.value += str;
