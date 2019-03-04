@@ -19,7 +19,7 @@ public class MessageService {
         return messageMapper.select();
     }
 
-    public int insert(String name, String time, String text) {
-        return  messageMapper.insert(name, time, text);
+    public int insert(Message message) {
+        return  messageMapper.insert(message);
     }
 }

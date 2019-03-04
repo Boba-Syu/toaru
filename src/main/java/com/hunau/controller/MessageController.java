@@ -13,6 +13,7 @@ import java.util.concurrent.Callable;
 
 /**
  * Created by MI on 2019/3/4.
+ * 信息公布系统页面(entity.html)的交互
  */
 @RestController
 public class MessageController {
@@ -20,7 +21,7 @@ public class MessageController {
     MessageService messageService;
 
     @RequestMapping("/messageSelect")
-    public Callable<List<Message>> select() {
+    public Callable<List<Message>> select() { // 展示公布信息内容
         Callable<List<Message>> callable = new Callable<List<Message>>() {
             @Override
             public List<Message> call() throws Exception {
@@ -32,7 +33,7 @@ public class MessageController {
     }
 
     @RequestMapping("/messageInsert")
-    public Callable<String> insert(@RequestParam(value = "ObjectMessage") String message) {
+    public Callable<String> insert(@RequestParam(value = "ObjectMessage") String message) { // 公布信息信息输入到数据库中
         Callable<String> callable = new Callable<String>() {
             @Override
             public String call() throws Exception {
@@ -40,7 +41,7 @@ public class MessageController {
                 Message message1 = (Message) JSONObject.toBean(j, Message.class);
                 //System.out.println(message);
                 //System.out.println(message1);
-                int result = messageService.insert(message1.getName(), message1.getTime(), message1.getText());
+                int result = messageService.insert(message1);
                 if (result == 1) {
                     return "success";
                 } else {

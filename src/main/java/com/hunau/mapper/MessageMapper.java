@@ -16,6 +16,7 @@ public interface MessageMapper {
     @Select("SELECT * FROM stu_message")
     public List<Message> select();
 
-    @Insert("INSERT INTO stu_message(name, time, text) VALUES( #{name}, #{time}, #{ text} )")
-    public int insert(String name, String time, String text);
+    @Insert("INSERT INTO stu_message(name, time, text) " +
+            "VALUES( #{name}, #{time}, #{text} )")
+    public int insert(Message message);
 }

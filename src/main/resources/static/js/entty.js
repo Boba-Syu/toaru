@@ -61,7 +61,7 @@ function insert() {
             }
         },
         error: function () {
-            window.alert($.trim($(name1).val()));
+            window.alert($.trim($(name1).val())+$.trim($(name1).val()));
         }
     })
 }
