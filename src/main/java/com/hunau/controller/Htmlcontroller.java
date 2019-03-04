@@ -1,9 +1,14 @@
 package com.hunau.controller;
 
 
+import com.hunau.entity.User;
+import net.sf.json.JSONObject;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.HashMap;
 import java.util.concurrent.Callable;
 
 /**
@@ -47,10 +52,13 @@ public class Htmlcontroller {
     }
 
     @RequestMapping("/magic")
-    public Callable<String> show2() { // 跳转到科学侧的信息展示界面magic.html
+    public Callable<String> show2(@RequestParam(value = "userName", required = false, defaultValue = "") String userName,
+                                  HashMap<String, Object> map) { // 跳转到科学侧的信息展示界面magic.html
         Callable<String> callable = new Callable<String>() {
             @Override
             public String call() throws Exception {
+                System.out.println(userName);
+                map.put("userName", userName);
                 return "magic";
             }
         };

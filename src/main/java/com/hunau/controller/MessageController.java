@@ -39,8 +39,6 @@ public class MessageController {
             public String call() throws Exception {
                 JSONObject j = JSONObject.fromObject(message);
                 Message message1 = (Message) JSONObject.toBean(j, Message.class);
-                //System.out.println(message);
-                //System.out.println(message1);
                 int result = messageService.insert(message1);
                 if (result == 1) {
                     return "success";

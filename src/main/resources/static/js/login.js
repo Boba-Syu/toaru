@@ -25,6 +25,19 @@ function yes2() { // 确定按钮功能设置
             dataType: 'text',
             success: function (result) { // 若操作成功则跳转到 "/toaru/magic"界面
                 if (result == "success") {
+                    $.ajax({
+                        type: 'get',
+                        url: "./magic",
+                        async: true,
+                        dataType: 'json',
+                        error: "重新请求",
+                        data: {'userName': user.name},
+                        Success: function () {
+                            window.location.href = "magic";
+                        },
+                        Error: function () {
+                        }
+                    });
                     window.location.href = "magic";
                 }
                 else {
@@ -37,6 +50,7 @@ function yes2() { // 确定按钮功能设置
         })
     }
 }
+
 $(document).ready(function () { // 页面加载完成时
     $("input").keyup(function (event) { //当聚焦在输入框中时, 回车键功能设置
         if (event.keyCode == 108 || event.keyCode == 13) {
