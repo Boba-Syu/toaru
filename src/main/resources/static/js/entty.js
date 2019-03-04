@@ -34,15 +34,18 @@ function send(message) { // 发送按钮功能设置
         return;
     }
     if (socket.readyState == WebSocket.OPEN) {
-        insert();
-        socket.send(message);
+        if ($.trim($(name1).val()) == '' || $.trim($(message1).val()) == '') {
+            window.alert("信息和用户名不能为空!");
+        } else {
+            insert();
+            socket.send(message);
+        }
     } else {
         alert("连接没有开启.\n");
     }
 }
 
 function insert() {
-    /*str = '['+this.form.name1.value+'] '+this.form.message.value;*/
     var ObjectMessage = new Object();
     ObjectMessage.name = $.trim($(name1).val());
     ObjectMessage.text = $.trim($(message1).val());
@@ -57,13 +60,14 @@ function insert() {
         success: function (result) {
             if (result == "success") {
             } else {
-                window.alert($.trim($(name1).val()));
+                window.alert('传输错误, 请稍后重试. ');
             }
         },
         error: function () {
-            window.alert($.trim($(name1).val()) + $.trim($(name1).val()));
+            window.alert('传输错误, 请稍后重试. ');
         }
     })
+
 }
 
 function getdate() {
