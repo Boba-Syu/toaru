@@ -102,5 +102,5 @@ $(document).ready(function () { // 当页面加载完成时
         },
         error: function () {
         }
-    })
+    });
 });

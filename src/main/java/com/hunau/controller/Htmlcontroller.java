@@ -1,14 +1,13 @@
 package com.hunau.controller;
 
 
-import com.hunau.entity.User;
-import net.sf.json.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.HashMap;
+import javax.servlet.http.HttpSession;
 import java.util.concurrent.Callable;
 
 /**
@@ -18,8 +17,8 @@ import java.util.concurrent.Callable;
 @Controller
 public class Htmlcontroller {
 
-    @RequestMapping(value = "/")
-    public Callable<String> index() { // 将index.html设置为主界面
+    @RequestMapping(value = "/") // 将index.html设置为主界面
+    public Callable<String> index() {
         Callable<String> callable = new Callable<String>() {
             @Override
             public String call() throws Exception {
@@ -29,8 +28,8 @@ public class Htmlcontroller {
         return callable;
     }
 
-    @RequestMapping(value = "login")
-    public Callable<String> login() { // 跳转到登录界面login.html
+    @RequestMapping(value = "login") // 跳转到登录界面login.html
+    public Callable<String> login() {
         Callable<String> callable = new Callable<String>() {
             @Override
             public String call() throws Exception {
@@ -40,8 +39,8 @@ public class Htmlcontroller {
         return callable;
     }
 
-    @RequestMapping(value = "register")
-    public Callable<String> register() { // 跳转到注册界面register.html
+    @RequestMapping(value = "register") // 跳转到注册界面register.html
+    public Callable<String> register() {
         Callable<String> callable = new Callable<String>() {
             @Override
             public String call() throws Exception {
@@ -51,22 +50,21 @@ public class Htmlcontroller {
         return callable;
     }
 
-    @RequestMapping("/magic")
+    @RequestMapping(value = "/magic", method = RequestMethod.POST,
+            produces = "application/json;charset=UTF-8") // 跳转到科学侧的信息展示界面magic.html
     public Callable<String> show2(@RequestParam(value = "userName", required = false, defaultValue = "") String userName,
-                                  HashMap<String, Object> map) { // 跳转到科学侧的信息展示界面magic.html
+                                  Model model) {
         Callable<String> callable = new Callable<String>() {
             @Override
             public String call() throws Exception {
-                System.out.println(userName);
-                map.put("userName", userName);
                 return "magic";
             }
         };
         return callable;
     }
 
-    @RequestMapping("/entty")
-    public Callable<String> entty() { // 跳转到信息广播界面entty.html
+    @RequestMapping("/entty") // 跳转到信息广播界面entty.html
+    public Callable<String> entty() {
         Callable<String> callable = new Callable<String>() {
             @Override
             public String call() throws Exception {

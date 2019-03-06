@@ -16,6 +16,7 @@ function yes2() { // 确定按钮功能设置
         var user = new Object(); // 打包数据
         user.name = $.trim($(id2).val());
         user.pwd = $.trim($(pwd2).val());
+        //console.warn(user.name + " 1");
         $.ajax({ //传送数据到"toaru/userLogin"界面, 用于对数据库操作
             type: 'GET',
             url: "/toaru/userLogin",
@@ -24,20 +25,21 @@ function yes2() { // 确定按钮功能设置
             data: {ObjectUser: JSON.stringify(user)},
             dataType: 'text',
             success: function (result) { // 若操作成功则跳转到 "/toaru/magic"界面
+                console.warn(user.name + " 2");
                 if (result == "success") {
-                    $.ajax({
+                    /*$.ajax({
                         type: 'get',
-                        url: "./magic",
+                        url: "magic",
                         async: true,
                         dataType: 'json',
                         error: "重新请求",
                         data: {'userName': user.name},
                         Success: function () {
-                            window.location.href = "magic";
                         },
                         Error: function () {
                         }
                     });
+                    console.warn(user.name + " 3");*/
                     window.location.href = "magic";
                 }
                 else {
