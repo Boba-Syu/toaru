@@ -50,10 +50,8 @@ public class Htmlcontroller {
         return callable;
     }
 
-    @RequestMapping(value = "/magic", method = RequestMethod.POST,
-            produces = "application/json;charset=UTF-8") // 跳转到科学侧的信息展示界面magic.html
-    public Callable<String> show2(@RequestParam(value = "userName", required = false, defaultValue = "") String userName,
-                                  Model model) {
+    @RequestMapping(value = "/magic") // 跳转到科学侧的信息展示界面magic.html
+    public Callable<String> show2() {
         Callable<String> callable = new Callable<String>() {
             @Override
             public String call() throws Exception {

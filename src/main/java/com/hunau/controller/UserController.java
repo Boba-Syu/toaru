@@ -40,7 +40,7 @@ public class UserController {
         return callable;
     }
 
-    @RequestMapping(value = "userRegister", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    @RequestMapping(value = "userRegister")
     public Callable<String> userRegister(@RequestParam(value = "ObjectUser") String user) { // 插入数据(注册用)
         Callable<String> callable = new Callable<String>() {
             @Override
