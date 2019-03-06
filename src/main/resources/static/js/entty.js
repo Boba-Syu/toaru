@@ -51,7 +51,7 @@ function insert() {
     ObjectMessage.time = getdate();
     $.ajax({
         type: 'GET',
-        url: "/toaru/messageInsert",
+        url: "messageInsert",
         contentType: 'application/json',
         timeout: 1000,
         data: {ObjectMessage: JSON.stringify(ObjectMessage)},
@@ -88,7 +88,7 @@ function back2() {
 $(document).ready(function () { // 当页面加载完成时
     $.ajax({
         type: 'get',
-        url: "/toaru/messageSelect",
+        url: "messageSelect",
         timeout: 1000,
         data: {},
         dataType: 'json',

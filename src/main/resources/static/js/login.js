@@ -5,7 +5,7 @@ function register() { // 注册按钮功能设置
     window.location.href = "register"; // 跳转到注册界面
 }
 function back() { // 返回按钮功能设置
-    window.location.href = "/toaru"; // 跳转到主界面
+    window.location.href = "/"; // 跳转到主界面
 }
 function yes2() { // 确定按钮功能设置
     if ($(id2).val() == "" || $(pwd2).val() == "") {
@@ -16,16 +16,16 @@ function yes2() { // 确定按钮功能设置
         var user = new Object(); // 打包数据
         user.name = $.trim($(id2).val());
         user.pwd = $.trim($(pwd2).val());
-        $.ajax({ //传送数据到"toaru/userLogin"界面, 用于对数据库操作
+        $.ajax({ //传送数据到"userLogin"界面, 用于对数据库操作
             type: 'GET',
-            url: "/toaru/userLogin",
+            url: "userLogin",
             contentType: 'application/json',
             timeout: 1000,
             data: {ObjectUser: JSON.stringify(user)},
             dataType: 'text',
-            success: function (result) { // 若操作成功则跳转到 "/toaru/magic"界面
+            success: function (result) { // 若操作成功则跳转到 "magic"界面
                 if (result == "success") {
-                    window.location.href = "/toaru/magic";
+                    window.location.href = "magic";
                 }
                 else {
                     window.alert("登陆失败");

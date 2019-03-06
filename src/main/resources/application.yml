@@ -1,7 +1,5 @@
 server:
-  zport: 8080
-  servlet:
-    context-path: /toaru
+  port: 8080
 spring:
   thymeleaf:
     prefix: classpath:/templates/
