@@ -81,6 +81,11 @@ function refresh2() { // 刷新按钮功能设置
     javascript:document.getElementById('responseText').value = '';
 }
 
+
+function back() { // 返回按钮功能设置
+    window.location.href = "login";
+}
+
 function back2() {
     window.location.href = "magic";
 }

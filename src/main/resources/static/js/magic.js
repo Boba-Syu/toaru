@@ -47,7 +47,7 @@ function insertYes() { // 插入操作的确定功能设置
 }
 
 function back() { // 返回按钮功能设置
-    window.location.href = "/";
+    window.location.href = "/login";
 }
 
 function yes() { // 刷新按钮功能设置
