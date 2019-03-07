@@ -15,7 +15,7 @@
         <h1 class="page-header">学园都市信息公布系统</h1>
         <textarea id="responseText" class="form-control" readonly></textarea><br>
         <div id="inName">
-            <input type="text" id="name1" class="form-control" placeholder="请输入用户名">
+            <input type="text" id="name1" class="form-control" placeholder="请输入用户名" th:value="${session.userName}" readonly>
         </div>
         <input type="text" id="message1" name="message" class="form-control" placeholder="请输入信息">
         <div class="btn-group">

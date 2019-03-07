@@ -23,7 +23,7 @@ public class UserController {
     UserService userService;
 
     @RequestMapping("userLogin")
-    public Callable<String> userLogin(@RequestParam(value = "ObjectUser") String user) { // 查找单行数据(登录用)
+    public Callable<String> userLogin(@RequestParam(value = "ObjectUser") String user, HttpSession session) { // 查找单行数据(登录用)
         Callable<String> callable = new Callable<String>() {
             @Override
             public String call() throws Exception {
@@ -31,6 +31,7 @@ public class UserController {
                 User user1 = (User) JSONObject.toBean(j, User.class);
                 User user2 = userService.login(user1.getName());
                 if (user1.getPwd().equals(user2.getPwd())) {
+                    session.setAttribute("userName", user1.getName());
                     return "success";
                 } else {
                     return "defeat";
