@@ -13,10 +13,11 @@ import java.util.List;
 @Repository
 public interface MagicUserMapper {
 
-    @Select("SELECT * FROM stu_c WHERE cname = #{cname}")
+    @Select("SELECT cname, csex, cschool, clevel, cpower, cgrade " +
+            "FROM stu_c WHERE cname = #{cname}")
     public MagicUser select(String cname);
 
-    @Select("SELECT * FROM stu_c WHERE cname " +
+    @Select("SELECT cname, csex, cschool, clevel, cpower, cgrade FROM stu_c WHERE cname " +
             "like CONCAT('%',#{name},'%') " +
             "or csex like CONCAT('%',#{name},'%') " +
             "or cschool like CONCAT('%',#{name},'%') " +
@@ -37,6 +38,6 @@ public interface MagicUserMapper {
     @Delete("DELETE FROM stu_c WHERE cname = #{cname}")
     public int delete(String cname);
 
-    @Select("SELECT * FROM stu_c")
+    @Select("SELECT cname, csex, cschool, clevel, cpower, cgrade FROM stu_c")
     public List<MagicUser> slowAll();
 }
