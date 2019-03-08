@@ -77,20 +77,11 @@ function getdate() {
     return y + "-" + (m < 10 ? "0" + m : m) + "-" + (d < 10 ? "0" + d : d) + " " + now.toTimeString().substr(0, 8);
 }
 
-function refresh2() { // 刷新按钮功能设置
+function refresh2() { // 清空按钮功能设置
     javascript:document.getElementById('responseText').value = '';
 }
 
-
-function back() { // 返回按钮功能设置
-    window.location.href = "login";
-}
-
-function back2() {
-    window.location.href = "magic";
-}
-
-$(document).ready(function () { // 当页面加载完成时
+function refresh1() {
     $.ajax({
         type: 'get',
         url: "messageSelect",
@@ -108,4 +99,16 @@ $(document).ready(function () { // 当页面加载完成时
         error: function () {
         }
     });
+}
+
+function back() { // 返回按钮功能设置
+    window.location.href = "login";
+}
+
+function back2() {
+    window.location.href = "magic";
+}
+
+$(document).ready(function () { // 当页面加载完成时
+    refresh1();
 });
