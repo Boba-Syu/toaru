@@ -10,8 +10,8 @@ function yes() { // 确定按钮功能设置
     }
     else {
         var user = new Object();
-        user.name = $.trim($(id2).val());
-        user.pwd = $.trim($(pwd2).val());
+        user.name = $.trim($(id3).val());
+        user.pwd = $.trim($(pwd3).val());
         $.ajax({
             type: 'get',
             url: "userRegister",
