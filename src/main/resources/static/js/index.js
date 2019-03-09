@@ -13,7 +13,7 @@ function register() {
 $(document).ready(function () { // 当页面加载完成时
     $.ajax({
         success: function () {
-            setTimeout(yes, 2100); //js休眠2.1秒后调用yes()函数
+            setTimeout(yes, 1100); //js休眠2.1秒后调用yes()函数
         }
     })
 });

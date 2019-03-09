@@ -2,7 +2,7 @@
  * Created by MI on 2019/2/22.
  */
 function back() { // 返回按钮功能设置
-    window.location.href = "/toaru/login";
+    window.location.href = "login";
 }
 function yes() { // 确定按钮功能设置
     if ($(id2).val() == "" || $(pwd2).val() == "") {
@@ -14,7 +14,7 @@ function yes() { // 确定按钮功能设置
         user.pwd = $.trim($(pwd2).val());
         $.ajax({
             type: 'get',
-            url: "/toaru/userRegister",
+            url: "userRegister",
             timeout: 1000,
             data: {ObjectUser: JSON.stringify(user)},
             dataType: 'text',

@@ -5,9 +5,12 @@ import com.hunau.service.UserService;
 import net.sf.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.concurrent.Callable;
 
 /**
@@ -20,7 +23,7 @@ public class UserController {
     UserService userService;
 
     @RequestMapping("userLogin")
-    public Callable<String> userLogin(@RequestParam(value = "ObjectUser") String user) { // 查找单行数据(登录用)
+    public Callable<String> userLogin(@RequestParam(value = "ObjectUser") String user, HttpSession session) { // 查找单行数据(登录用)
         Callable<String> callable = new Callable<String>() {
             @Override
             public String call() throws Exception {
@@ -28,6 +31,7 @@ public class UserController {
                 User user1 = (User) JSONObject.toBean(j, User.class);
                 User user2 = userService.login(user1.getName());
                 if (user1.getPwd().equals(user2.getPwd())) {
+                    session.setAttribute("userName", user1.getName());
                     return "success";
                 } else {
                     return "defeat";
@@ -37,7 +41,7 @@ public class UserController {
         return callable;
     }
 
-    @RequestMapping("userRegister")
+    @RequestMapping(value = "userRegister")
     public Callable<String> userRegister(@RequestParam(value = "ObjectUser") String user) { // 插入数据(注册用)
         Callable<String> callable = new Callable<String>() {
             @Override

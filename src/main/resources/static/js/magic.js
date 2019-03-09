@@ -7,6 +7,7 @@ function insert() { //插入按钮功能设置
     $("#inbutton").fadeToggle(200);
     search();
 }
+
 function insertYes() { // 插入操作的确定功能设置
     $("#fm").serialize();
     var ObjectUser = new Object();
@@ -22,7 +23,7 @@ function insertYes() { // 插入操作的确定功能设置
     } else {
         $.ajax({
             type: 'GET',
-            url: "/toaru/insert",
+            url: "insert",
             contentType: 'application/json',
             timeout: 1000,
             data: {ObjectUser: JSON.stringify(ObjectUser)},
@@ -44,13 +45,15 @@ function insertYes() { // 插入操作的确定功能设置
         })
     }
 }
+
 function back() { // 返回按钮功能设置
-    window.location.href = "/toaru";
+    window.location.href = "/login";
 }
+
 function yes() { // 刷新按钮功能设置
     $.ajax({
         type: 'get',
-        url: "/toaru/show2",
+        url: "show2",
         timeout: 1000,
         data: {},
         dataType: 'json',
@@ -74,12 +77,13 @@ function yes() { // 刷新按钮功能设置
         }
     })
 }
+
 function search() { // 搜索功能设置
     var user = new Object();
     user.cname = $.trim($(id2).val());
     $.ajax({
         type: 'get',
-        url: "/toaru/search",
+        url: "search",
         timeout: 1000,
         data: {ObjectUser: JSON.stringify(user)},
         dataType: 'json',
@@ -102,6 +106,7 @@ function search() { // 搜索功能设置
         }
     })
 }
+
 $(document).ready(function () {
     $(id2).keyup(function () { // 当聚焦在搜索框时, 调用search()函数
         search();
@@ -111,12 +116,13 @@ $(document).ready(function () {
     $("#inbutton").fadeOut(1);
     search();
 });
+
 function del() { // 删除按钮功能设置
     var user = new Object();
     user.cname = $.trim($(id2).val());
     $.ajax({
         type: 'get',
-        url: "/toaru/delete",
+        url: "delete",
         timeout: 1000,
         data: {ObjectUser: JSON.stringify(user)},
         dataType: 'text',
@@ -134,6 +140,8 @@ function del() { // 删除按钮功能设置
         }
     })
 }
+
 function entty() { // 广播信息按钮功能设置
-    window.location.href = "/toaru/entty";
+    var userName = document.getElementById("uname").innerHTML;
+    window.location.href = "entty";
 }

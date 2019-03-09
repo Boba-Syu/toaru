@@ -2,8 +2,12 @@ package com.hunau.controller;
 
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.HttpSession;
 import java.util.concurrent.Callable;
 
 /**
@@ -13,30 +17,33 @@ import java.util.concurrent.Callable;
 @Controller
 public class Htmlcontroller {
 
-    @RequestMapping(value = "/")
-    public Callable<String> index() { // 将index.html设置为主界面
+    @RequestMapping(value = "/") // 将index.html设置为主界面
+    public Callable<String> index(HttpSession session) {
         Callable<String> callable = new Callable<String>() {
             @Override
             public String call() throws Exception {
+                if (session.getAttribute("userName") != null)
+                    return "magic";
                 return "index";
             }
         };
         return callable;
     }
 
-    @RequestMapping(value = "login")
-    public Callable<String> login() { // 跳转到登录界面login.html
+    @RequestMapping(value = "login") // 跳转到登录界面login.html
+    public Callable<String> login(HttpSession session) {
         Callable<String> callable = new Callable<String>() {
             @Override
             public String call() throws Exception {
+                session.setAttribute("userName", null);
                 return "login";
             }
         };
         return callable;
     }
 
-    @RequestMapping(value = "register")
-    public Callable<String> register() { // 跳转到注册界面register.html
+    @RequestMapping(value = "register") // 跳转到注册界面register.html
+    public Callable<String> register() {
         Callable<String> callable = new Callable<String>() {
             @Override
             public String call() throws Exception {
@@ -46,22 +53,26 @@ public class Htmlcontroller {
         return callable;
     }
 
-    @RequestMapping("/magic")
-    public Callable<String> show2() { // 跳转到科学侧的信息展示界面magic.html
+    @RequestMapping(value = "/magic") // 跳转到科学侧的信息展示界面magic.html
+    public Callable<String> show2(HttpSession session) {
         Callable<String> callable = new Callable<String>() {
             @Override
             public String call() throws Exception {
+                if (session.getAttribute("userName") == null)
+                    return "unlogin";
                 return "magic";
             }
         };
         return callable;
     }
 
-    @RequestMapping("/entty")
-    public Callable<String> entty() { // 跳转到信息广播界面entty.html
+    @RequestMapping("/entty") // 跳转到信息广播界面entty.html
+    public Callable<String> entty(HttpSession session) {
         Callable<String> callable = new Callable<String>() {
             @Override
             public String call() throws Exception {
+                if (session.getAttribute("userName") == null)
+                    return "unlogin";
                 return "entty";
             }
         };

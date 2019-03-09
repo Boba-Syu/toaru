@@ -7,7 +7,7 @@ div {
 }
 
 #progress { /* 进度条设置 */
-    animation-duration: 2s;
+    animation-duration: 1s;
     animation-name: an;
     animation-timing-function: linear;
     animation-iteration-count: 1;
