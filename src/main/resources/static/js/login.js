@@ -8,6 +8,7 @@ function back() { // 返回按钮功能设置
     window.location.href = "/"; // 跳转到主界面
 }
 function yes2() { // 确定按钮功能设置
+    console.error(1);
     if ($(id2).val() == "" || $(pwd2).val() == "") {
         window.alert("输入框内不能为空!");
     }

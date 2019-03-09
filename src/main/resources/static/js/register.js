@@ -5,7 +5,8 @@ function back() { // 返回按钮功能设置
     window.location.href = "login";
 }
 function yes() { // 确定按钮功能设置
-    if ($(id2).val() == "" || $(pwd2).val() == "") {
+    console.error(1);
+    if ($(id3).val() == "" || $(pwd3).val() == "") {
         window.alert("输入框内不能为空!");
     }
     else {

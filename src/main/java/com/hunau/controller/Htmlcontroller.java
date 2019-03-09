@@ -36,7 +36,7 @@ public class Htmlcontroller {
             @Override
             public String call() throws Exception {
                 session.setAttribute("userName", null);
-                return "login";
+                return "login3";
             }
         };
         return callable;
