@@ -14,8 +14,13 @@ public class UserService {
     @Autowired
     UserMapper userMapper;
 
-    public User login(String name) {
-        return userMapper.login(name);
+    public String login(User user) {
+        User user2 = userMapper.login(user.getName());
+        if (user2 == null || user2.getName() == null || user2.getName().equals(""))
+            return "用户名不存在";
+        if (user.getPwd().equals(user2.getPwd()))
+            return "success";
+        return "defeat";
     }
 
     public int register(User user) {

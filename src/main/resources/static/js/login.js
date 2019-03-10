@@ -29,7 +29,7 @@ function yes2() { // 确定按钮功能设置
                     window.location.href = "magic";
                 }
                 else {
-                    window.alert("登陆失败");
+                    window.alert(result);
                 }
             },
             error: function () {
