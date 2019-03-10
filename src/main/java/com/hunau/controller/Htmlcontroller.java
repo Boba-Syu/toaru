@@ -66,14 +66,14 @@ public class Htmlcontroller {
         return callable;
     }
 
-    @RequestMapping("/entty") // 跳转到信息广播界面entty.html
+    @RequestMapping("/netty") // 跳转到信息广播界面entty.html
     public Callable<String> entty(HttpSession session) {
         Callable<String> callable = new Callable<String>() {
             @Override
             public String call() throws Exception {
                 if (session.getAttribute("userName") == null)
                     return "unlogin";
-                return "entty";
+                return "netty";
             }
         };
         return callable;

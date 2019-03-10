@@ -1,4 +1,4 @@
-package com.hunau.entty;
+package com.hunau.netty;
 
 import io.netty.channel.group.ChannelGroup;
 import io.netty.channel.group.DefaultChannelGroup;

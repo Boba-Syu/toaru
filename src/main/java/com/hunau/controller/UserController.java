@@ -29,10 +29,12 @@ public class UserController {
             public String call() throws Exception {
                 JSONObject j = JSONObject.fromObject(user);
                 User user1 = (User) JSONObject.toBean(j, User.class);
-                String result = userService.login(user1);
-                session.setAttribute("userName", user1.getName());
-                //System.out.println(result);
-                return result;
+                User user2 = userService.login(user1);
+                if(user2.getPwd().equals(user1.getPwd())) {
+                    session.setAttribute("userName", user1.getName());
+                    return "success";
+                } else
+                    return "defeat";
             }
         };
         return callable;

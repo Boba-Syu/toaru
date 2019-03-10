@@ -1,4 +1,4 @@
-package com.hunau.entty;
+package com.hunau.netty;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;

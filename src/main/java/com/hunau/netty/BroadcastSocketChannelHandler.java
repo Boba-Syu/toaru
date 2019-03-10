@@ -1,4 +1,4 @@
-package com.hunau.entty;
+package com.hunau.netty;
 
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.socket.SocketChannel;

@@ -143,5 +143,5 @@ function del() { // 删除按钮功能设置
 
 function entty() { // 广播信息按钮功能设置
     var userName = document.getElementById("uname").innerHTML;
-    window.location.href = "entty";
+    window.location.href = "netty";
 }
